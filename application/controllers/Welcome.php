@@ -11,12 +11,22 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		// $this->load->view('welcome_message');
+
+		$this->load->view("hitung");
 	}
 
 	public function jumlah()
 	{
-		echo "Hasil Penjumlahan : ";
-		echo $this->WelcomeModel->hitung(10,5);
+		if( $this->input->post("post") )
+		{
+			$panjang = $this->input->post("panjang");
+			$lebar   = $this->input->post("lebar");
+			echo "Hasil Penjumlahan : ";
+			echo $this->WelcomeModel->hitung($panjang,$lebar);
+		}
+		else {
+			echo "Data tidak dipost";
+		}
 	}
 }
